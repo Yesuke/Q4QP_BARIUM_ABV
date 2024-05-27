@@ -3,9 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sign Up Form</title>
+    <style>
+        .error {
+            border-color: red;
+        }
+    </style>
 </head>
 <body>
-    <a href="index.html">yes</a>
+    <form id="signUpForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required onblur="validateField(this)"><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required onblur="validateField(this)"><br><br>
+
+        <label>Sex:</label>
+        <input type="radio" id="male" name="sex" value="male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="sex" value="female" required>
+        <label for="female">Female</label>
+        <input type="radio" id="preferNotToSay" name="sex" value="preferNotToSay" required>
+        <label for="preferNotToSay">Prefer not to say</label><br><br>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required onblur="validateField(this)"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onblur="validateField(this)"><br><br>
+
+        <label for="contactNumber">Contact Number (not required):</label>
+        <input type="tel" id="contactNumber" name="contactNumber"><br><br>
+
+        <label for="supportReason">Why I support this campaign?:</label>
+        <textarea id="supportReason" name="supportReason" required onblur="validateField(this)"></textarea><br><br>
+
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="menubar">
+        <div class="logo">
+        <img src="images/logo2.png" alt="">
+    </div>
+    </div>
+
+
+    <script>
+        function validateField(field) {
+            if (!field.value) {
+                field.classList.add('error');
+            } else {
+                field.classList.remove('error');
+            }
+        }
+
+        document.getElementById('signUpForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let isValid = true;
+            const requiredFields = document.querySelectorAll('#signUpForm [required]');
+
+            requiredFields.forEach(function(field) {
+                if (!field.value) {
+                    field.classList.add('error');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+                
+            } else {
+                alert('Please fill out all required fields.');
+            }
+        });
+    </script>
 </body>
 </html>
