@@ -44,7 +44,7 @@ body{
 }
 
 .buttoncontainer{
-    margin-top: 5vh;
+    margin-top: 8vh;
 }
 .bg{
     background-image:none;
@@ -62,6 +62,7 @@ body{
 
 .buttoncontainer h2{
     font-size: xx-large;
+    top:10%;
 }
 
 .buttoncontainer a{
